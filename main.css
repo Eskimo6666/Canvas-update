@@ -1,0 +1,7 @@
+li {
+    width: 10px;
+    height: 10px;
+    margin: 10px;
+    float: left;
+    list-style: none;
+}
