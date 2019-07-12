@@ -6,6 +6,9 @@ var brush = document.querySelector('#brush')
 var clearWin = document.querySelector('#clearWin')
 var saveImage = document.querySelector('#saveImage')
 var colorBu = document.getElementsByClassName('color')
+var $imgW = document.getElementById('imgW')
+var $imgH = document.getElementById('imgH')
+var $sel = document.getElementById('sel');
 var ctx = myCanvas.getContext('2d')
 var historyData = [] //存储undo的历史纪录
 var beginPoint = null
@@ -17,6 +20,9 @@ let points = [] //存储贝塞尔曲线绘制点
 
 
 autoSetSize() //初始时先设置一次画布宽高
+
+ctx.fillStyle = 'white'
+ctx.fillRect(0,0,myCanvas.width,myCanvas.height)
 
 function autoSetSize(canvas) {
     let pageWidth = document.documentElement.clientWidth
@@ -38,9 +44,9 @@ myCanvas.addEventListener('mouseout', up)
 /* 监听鼠标事件 */
 
 function getPos(e) {
-    return {
-        x: e.clientX - myCanvas.offsetLeft,
-        y: e.clientY - myCanvas.offsetTop
+    return {         
+        x: e.clientX - myCanvas.offsetLeft + (window.pageXOffset||document.body.scrollLeft||document.documentElement.scrollLeft),
+        y: e.clientY - myCanvas.offsetTop + (window.pageYOffset||document.body.scrollTop||document.documentElement.scrollTop)
     }
 }
 
@@ -165,13 +171,10 @@ clearWin.onclick = function () {
 /*清屏功能----------- */
 
 saveImage.onclick = function () {
-    var url = myCanvas.toDataURL('image/png')
-    var a = document.createElement('a')
-    document.body.appendChild(a)
-    a.href = url
-    a.download = 'Eskimo' + (new Date).getTime()
-    a.target = '_blank'
-    a.click()
+    var type = $sel.value,
+        w = $imgW.value,
+        h = $imgH.value;
+    Canvas2Image.saveAsImage(myCanvas, w, h, type);
 }
 
 /**-----------保存为png------- */
