@@ -5,7 +5,7 @@ var brushWidth = document.querySelector('#range')
 var brush = document.querySelector('#brush')
 var clearWin = document.querySelector('#clearWin')
 var saveImage = document.querySelector('#saveImage')
-var colorBu = document.getElementsByClassName('color')
+
 var $imgW = document.getElementById('imgW')
 var $imgH = document.getElementById('imgH')
 var $sel = document.getElementById('sel');
@@ -22,7 +22,7 @@ let points = [] //存储贝塞尔曲线绘制点
 autoSetSize() //初始时先设置一次画布宽高
 
 ctx.fillStyle = 'white'
-ctx.fillRect(0,0,myCanvas.width,myCanvas.height)
+ctx.fillRect(0, 0, myCanvas.width, myCanvas.height)
 
 function autoSetSize(canvas) {
     let pageWidth = document.documentElement.clientWidth
@@ -44,9 +44,9 @@ myCanvas.addEventListener('mouseout', up)
 /* 监听鼠标事件 */
 
 function getPos(e) {
-    return {         
-        x: e.clientX - myCanvas.offsetLeft + (window.pageXOffset||document.body.scrollLeft||document.documentElement.scrollLeft),
-        y: e.clientY - myCanvas.offsetTop + (window.pageYOffset||document.body.scrollTop||document.documentElement.scrollTop)
+    return {
+        x: e.clientX - myCanvas.offsetLeft + (window.pageXOffset || document.body.scrollLeft || document.documentElement.scrollLeft),
+        y: e.clientY - myCanvas.offsetTop + (window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop)
     }
 }
 
@@ -179,17 +179,21 @@ saveImage.onclick = function () {
 
 /**-----------保存为png------- */
 
-function changeColor() {
-    for (let i = 0; i < colorBu.length; i++) {
-        colorBu[i].onclick = function () {
-            for (let i = 0; i < colorBu.length; i++) {
-                colorBu[i].classList.remove('active')
-                this.classList.add('active')
-                activeColor = this.style.background
-                ctx.fillStyle = activeColor
-                ctx.strokeStyle = activeColor
-            }
+
+
+/*-------颜色切换，事件委托------- */
+function changeColor2() {
+    const colorUl = document.getElementById('color-item')
+    const colorItem = colorUl.children
+    colorUl.addEventListener('click', (e) => {
+        for(item of colorItem){
+           item.classList.remove('active')
         }
-    }
+        e.target.classList.add('active')
+        activeColor = e.target.style.background
+        ctx.fillStyle = activeColor
+        ctx.strokeStyle = activeColor
+    }, false)
+
 }
-changeColor()
+changeColor2()
