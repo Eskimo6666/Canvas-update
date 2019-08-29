@@ -1,14 +1,5 @@
 var myCanvas = document.querySelector('#myCanvas')
-var undo = document.querySelector('#undo')
-var eraser = document.querySelector('#eraser')
-var brushWidth = document.querySelector('#range')
-var brush = document.querySelector('#brush')
-var clearWin = document.querySelector('#clearWin')
-var saveImage = document.querySelector('#saveImage')
 
-var $imgW = document.getElementById('imgW')
-var $imgH = document.getElementById('imgH')
-var $sel = document.getElementById('sel');
 var ctx = myCanvas.getContext('2d')
 var historyData = [] //存储undo的历史纪录
 var beginPoint = null
@@ -36,7 +27,8 @@ window.onresize = function () {
 }
 /*屏幕大小改变自动设置canvas的画布大小 */
 
-myCanvas.addEventListener('mousedown', down)
+
+myCanvas.addEventListener("mousedown", down)
 myCanvas.addEventListener('mousemove', move)
 myCanvas.addEventListener('mouseup', up)
 myCanvas.addEventListener('mouseout', up)
@@ -85,6 +77,7 @@ range.onchange = function () {
 /* 滚动条设置画笔粗细 */
 
 function down(e) {
+    
     this.firstData = ctx.getImageData(0, 0, myCanvas.width, myCanvas.height)
     saveData(this.firstData)
     using = true
@@ -99,7 +92,6 @@ function move(e) {
     if (!using) return
     var { x, y } = getPos(e)
     points.push({ x, y })
-
     if (points.length > 3) {
         let lastTwoPoints = points.slice(-2)
         let controlPoint = lastTwoPoints[0]
@@ -216,7 +208,6 @@ function removeActive(){
 
 function circleChangeSize(){
     const circleSize = document.querySelector('.sizes')
-    const circleList = circleSize.children
     circleSize.addEventListener('click',(e)=>{
         console.log(e.target.value)
         lWidth = e.target.value
