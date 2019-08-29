@@ -151,8 +151,7 @@ function saveData(data) {
 eraser.onclick = function () {
     clear = true
     removeActive()
-    eraser.classList.add('active')
-    
+    eraser.classList.add('active')   
 }
 /*----------------------- */
 
@@ -160,11 +159,6 @@ brush.onclick = function () {
     clear = false
     removeActive()
     brush.classList.add('active')
-   
-    /* undo.classList.remove('active')
-    eraser.classList.remove('active')
-    clearWin.classList.remove('active')
-    saveImage.classList.remove('active') */
 }
 
 /*----------------------- */
@@ -211,19 +205,6 @@ function changeColor2() {
 }
 changeColor2()
 
-/* function changeActions(){
-    const actions = document.querySelector('.actions')
-    const actionsList = actions.children
-    actions.addEventListener('click',(e)=>{
-        for(item of actionsList){
-            item.classList.remove('active')
-        }
-        console.log(e.target)
-        e.target.classList.add('active')
-    },true)
-}
-
-changeActions() */
 
 function removeActive(){
     const actions = document.querySelector('.actions')
@@ -232,3 +213,13 @@ function removeActive(){
         item.classList.remove('active')
     }
 }
+
+function circleChangeSize(){
+    const circleSize = document.querySelector('.sizes')
+    const circleList = circleSize.children
+    circleSize.addEventListener('click',(e)=>{
+        console.log(e.target.value)
+        lWidth = e.target.value
+    },false)
+}
+circleChangeSize()
