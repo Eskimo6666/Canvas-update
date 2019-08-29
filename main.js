@@ -133,6 +133,8 @@ function up(e) {
 /* 鼠标抬起函数 */
 
 undo.onclick = function () {
+    removeActive()
+    undo.classList.add('active')
     if (historyData.length < 1) return false
     ctx.putImageData(historyData[historyData.length - 1], 0, 0)
     historyData.pop()
@@ -148,17 +150,29 @@ function saveData(data) {
 
 eraser.onclick = function () {
     clear = true
+    removeActive()
+    eraser.classList.add('active')
+    
 }
 /*----------------------- */
 
 brush.onclick = function () {
     clear = false
+    removeActive()
+    brush.classList.add('active')
+   
+    /* undo.classList.remove('active')
+    eraser.classList.remove('active')
+    clearWin.classList.remove('active')
+    saveImage.classList.remove('active') */
 }
 
 /*----------------------- */
 
 clearWin.onclick = function () {
     clear = false
+    removeActive()
+    clearWin.classList.add('active')
     historyData = []
     points = []
     using = false
@@ -171,10 +185,9 @@ clearWin.onclick = function () {
 /*清屏功能----------- */
 
 saveImage.onclick = function () {
-    var type = $sel.value,
-        w = $imgW.value,
-        h = $imgH.value;
-    Canvas2Image.saveAsImage(myCanvas, w, h, type);
+    removeActive()
+    saveImage.classList.add('active')
+    Canvas2Image.saveAsImage(myCanvas);   
 }
 
 /**-----------保存为png------- */
@@ -197,3 +210,25 @@ function changeColor2() {
 
 }
 changeColor2()
+
+/* function changeActions(){
+    const actions = document.querySelector('.actions')
+    const actionsList = actions.children
+    actions.addEventListener('click',(e)=>{
+        for(item of actionsList){
+            item.classList.remove('active')
+        }
+        console.log(e.target)
+        e.target.classList.add('active')
+    },true)
+}
+
+changeActions() */
+
+function removeActive(){
+    const actions = document.querySelector('.actions')
+    const actionsList = actions.children
+    for(item of actionsList){
+        item.classList.remove('active')
+    }
+}

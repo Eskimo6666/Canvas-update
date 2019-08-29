@@ -1,12 +1,134 @@
-li {
-    width: 10px;
-    height: 10px;
-    margin: 10px;
-    float: left;
+* {
+    border: 0px;
+    padding: 0px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#myCanvas {
+    background: white;
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.actions svg.active {
+    fill: grey;
+    transform: scale(1.2);
+    transition: all 0.1s;
+}
+
+.actions svg {
+    margin: 10px 10px;
+    width: 2em;
+    height: 2em;
+}
+
+.actions {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    margin-left: -111px
+}
+
+.icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+.actions svg.active {
+    fill: grey;
+    transform: scale(1.2);
+    transition: all 0.1s;
+}
+
+#color-item {
+    position: fixed;
+    top: 66px;
+    right: 25px;
+}
+
+#color-item li {
+    width: 25px;
+    height: 25px;
+    margin: 20px 0;
+    border-radius: 50%;
     list-style: none;
 }
 
-.active{
-    transform:scale(1.2);
-    transition:all 0.1s;
+.savePhoto {
+    position: fixed;
+}
+
+.range {
+    position: fixed;
+    top: 110px;
+    right: 25px;
+}
+
+.active {
+    transform: scale(1.2);
+    transition: all 0.1s;
+}
+
+.size-wrapper {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 241px;
+    right: 20px;
+}
+
+.size-wrapper>.range {
+    position: relative;
+    border: 1px solid red;
+    right: 3px;
+}
+
+.size-wrapper input {
+    position: absolute;
+    display: block;
+    width: 250px;
+    height: 5px;
+    margin: 0;
+    transform-origin: 75px 75px;
+    transform: rotate(-90deg);
+}
+
+.sizes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid red;
+}
+
+.sizes li {
+    list-style: none;
+    background: black;
+    border-radius: 50%;
+    margin: 10px 0;
+}
+
+.sizes li:nth-child(1) {
+    width: 30px;
+    height: 30px;
+}
+
+.sizes li:nth-child(2) {
+    width: 10px;
+    height: 10px;
+}
+
+.sizes li:nth-child(3) {
+    width: 5px;
+    height: 5px;
 }

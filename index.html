@@ -26,41 +26,31 @@
             <svg id='clearWin' class="icon">
                 <use xlink:href="#icon-trash"></use>
             </svg>
+            <svg id='saveImage' class="icon">
+                    <use xlink:href="#icon-save"></use>
+            </svg>
         </div>
-
-        <div class="savePhoto">
-            <p>
-                <button id="saveImage">saveImage</button>
-                <select id="sel">
-                    <option value="png">png</option>
-                    <option value="jpeg">jpeg</option>
-                </select>
-                <br>
-                "
-                width:"
-                <input type="number" value="300" id="imgW">
-                <br>
-                "
-                height:"
-                <input type="number" value="200" id="imgH">
-            </p>
-        </div>
-        <ul id="color-item">
+        <ol id="color-item">
             <li class="color" style="background:pink;"></li>
             <li class="color active" style="background:tomato;"></li>
             <li class="color" style="background:purple;"></li>
-        </ul>
-        <ul class="sizes">
-            <li class="thin"></li>
-            <li class="medium"></li>
-            <li class="blod"></li>
-        </ul>
-        <div class="range"><input type="range" id="range" min='1' max='30' value='5' title="调整笔画粗细"></div>
+        </ol>
+        <div class="size-wrapper">
+            <ol class="sizes">
+                <li class="thin"></li>
+                <li class="medium"></li>
+                <li class="blod"></li>
+            </ol>
+            <div class="range"><input type="range" id="range" min='1' max='30' value='5' title="调整笔画粗细"></div>
+        </div>
+
     </div>
 
     <script src="./main.js"></script>
+    <script src="./canvas2image/canvas2image.js"></script>
     <script src="//at.alicdn.com/t/font_1126726_trfrmphjkuq.js
 "></script>
+
 </body>
 
 </html>
